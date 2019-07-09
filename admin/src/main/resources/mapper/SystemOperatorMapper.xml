@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.admin.sys.mapper.SystemOperatorMapper" >
+  <resultMap id="BaseResultMap" type="com.admin.sys.entity.SystemOperator" >
+    <id column="operator_id" property="operatorId" jdbcType="VARCHAR" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="person_gender" property="personGender" jdbcType="CHAR" />
+    <result column="contact_number" property="contactNumber" jdbcType="VARCHAR" />
+    <result column="vaild_datetime" property="vaildDatetime" jdbcType="TIMESTAMP" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="update_password_time" property="updatePasswordTime" jdbcType="TIMESTAMP" />
+    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="login_failed_times" property="loginFailedTimes" jdbcType="INTEGER" />
+    <result column="last_login_address" property="lastLoginAddress" jdbcType="VARCHAR" />
+    <result column="active" property="active" jdbcType="CHAR" />
+    <result column="next_login_time" property="nextLoginTime" jdbcType="TIMESTAMP" />
+    <result column="is_first" property="isFirst" jdbcType="CHAR" />
+    <result column="is_login" property="isLogin" jdbcType="CHAR" />
+    <result column="comments" property="comments" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    operator_id, login_name, name, person_gender, contact_number, vaild_datetime, password, 
+    update_password_time, last_login_time, login_failed_times, last_login_address, active, 
+    next_login_time, is_first, is_login, comments, create_date, update_date, operator
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from system_operator
+    where operator_id = #{operatorId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from system_operator
+    where operator_id = #{operatorId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.admin.sys.entity.SystemOperator" >
+    insert into system_operator (operator_id, login_name, name, 
+      person_gender, contact_number, vaild_datetime, 
+      password, update_password_time, last_login_time, 
+      login_failed_times, last_login_address, active, 
+      next_login_time, is_first, is_login, 
+      comments, create_date, update_date, 
+      operator)
+    values (#{operatorId,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{personGender,jdbcType=CHAR}, #{contactNumber,jdbcType=VARCHAR}, #{vaildDatetime,jdbcType=TIMESTAMP}, 
+      #{password,jdbcType=VARCHAR}, #{updatePasswordTime,jdbcType=TIMESTAMP}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{loginFailedTimes,jdbcType=INTEGER}, #{lastLoginAddress,jdbcType=VARCHAR}, #{active,jdbcType=CHAR}, 
+      #{nextLoginTime,jdbcType=TIMESTAMP}, #{isFirst,jdbcType=CHAR}, #{isLogin,jdbcType=CHAR}, 
+      #{comments,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{operator,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.admin.sys.entity.SystemOperator" >
+    insert into system_operator
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="operatorId != null" >
+        operator_id,
+      </if>
+      <if test="loginName != null" >
+        login_name,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="personGender != null" >
+        person_gender,
+      </if>
+      <if test="contactNumber != null" >
+        contact_number,
+      </if>
+      <if test="vaildDatetime != null" >
+        vaild_datetime,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="updatePasswordTime != null" >
+        update_password_time,
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time,
+      </if>
+      <if test="loginFailedTimes != null" >
+        login_failed_times,
+      </if>
+      <if test="lastLoginAddress != null" >
+        last_login_address,
+      </if>
+      <if test="active != null" >
+        active,
+      </if>
+      <if test="nextLoginTime != null" >
+        next_login_time,
+      </if>
+      <if test="isFirst != null" >
+        is_first,
+      </if>
+      <if test="isLogin != null" >
+        is_login,
+      </if>
+      <if test="comments != null" >
+        comments,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="personGender != null" >
+        #{personGender,jdbcType=CHAR},
+      </if>
+      <if test="contactNumber != null" >
+        #{contactNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="vaildDatetime != null" >
+        #{vaildDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePasswordTime != null" >
+        #{updatePasswordTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null" >
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginFailedTimes != null" >
+        #{loginFailedTimes,jdbcType=INTEGER},
+      </if>
+      <if test="lastLoginAddress != null" >
+        #{lastLoginAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="active != null" >
+        #{active,jdbcType=CHAR},
+      </if>
+      <if test="nextLoginTime != null" >
+        #{nextLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isFirst != null" >
+        #{isFirst,jdbcType=CHAR},
+      </if>
+      <if test="isLogin != null" >
+        #{isLogin,jdbcType=CHAR},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.admin.sys.entity.SystemOperator" >
+    update system_operator
+    <set >
+      <if test="loginName != null" >
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="personGender != null" >
+        person_gender = #{personGender,jdbcType=CHAR},
+      </if>
+      <if test="contactNumber != null" >
+        contact_number = #{contactNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="vaildDatetime != null" >
+        vaild_datetime = #{vaildDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePasswordTime != null" >
+        update_password_time = #{updatePasswordTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginFailedTimes != null" >
+        login_failed_times = #{loginFailedTimes,jdbcType=INTEGER},
+      </if>
+      <if test="lastLoginAddress != null" >
+        last_login_address = #{lastLoginAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="active != null" >
+        active = #{active,jdbcType=CHAR},
+      </if>
+      <if test="nextLoginTime != null" >
+        next_login_time = #{nextLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isFirst != null" >
+        is_first = #{isFirst,jdbcType=CHAR},
+      </if>
+      <if test="isLogin != null" >
+        is_login = #{isLogin,jdbcType=CHAR},
+      </if>
+      <if test="comments != null" >
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where operator_id = #{operatorId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.admin.sys.entity.SystemOperator" >
+    update system_operator
+    set login_name = #{loginName,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      person_gender = #{personGender,jdbcType=CHAR},
+      contact_number = #{contactNumber,jdbcType=VARCHAR},
+      vaild_datetime = #{vaildDatetime,jdbcType=TIMESTAMP},
+      password = #{password,jdbcType=VARCHAR},
+      update_password_time = #{updatePasswordTime,jdbcType=TIMESTAMP},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      login_failed_times = #{loginFailedTimes,jdbcType=INTEGER},
+      last_login_address = #{lastLoginAddress,jdbcType=VARCHAR},
+      active = #{active,jdbcType=CHAR},
+      next_login_time = #{nextLoginTime,jdbcType=TIMESTAMP},
+      is_first = #{isFirst,jdbcType=CHAR},
+      is_login = #{isLogin,jdbcType=CHAR},
+      comments = #{comments,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR}
+    where operator_id = #{operatorId,jdbcType=VARCHAR}
+  </update>
+  
+  
+    <select id="listWithPage" resultMap="BaseResultMap" parameterType="com.admin.sys.entity.SystemOperator" >
+    select 
+    <include refid="Base_Column_List" />
+    from system_operator
+  </select>
+</mapper>
