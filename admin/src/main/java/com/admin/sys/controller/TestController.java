@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.admin.sys.entity.User;
 import com.admin.sys.service.IUserService;
+import com.github.pagehelper.PageInfo;
 
 @RestController
+@RequestMapping("/t")
 public class TestController {
 	@Autowired
 	private IUserService userService;
@@ -25,9 +27,9 @@ public class TestController {
 	}
 	
 	
-	@RequestMapping("/b")
-	public List<User> b(String name, Integer age) {
-		return userService.selectUsers();
+	@RequestMapping("/list")
+	public PageInfo<User>  b(int page, int pageSize) {
+		return userService.selectUsers(page, pageSize);
 	}
 
 }

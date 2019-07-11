@@ -12,6 +12,8 @@ import com.admin.sys.entity.User;
 import com.admin.sys.mapper.SystemOperatorMapper;
 import com.admin.sys.mapper.UserMapper;
 import com.admin.sys.service.IUserService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 @Service
 public class UserServiceImpl implements IUserService{
@@ -34,8 +36,14 @@ public class UserServiceImpl implements IUserService{
 	}
 
 	@Transactional
-	public List<User> selectUsers() {
-		return userMapper.selectUsers();
+	public PageInfo<User> selectUsers(int page, int pageSize) {
+		PageHelper.startPage(page, pageSize); // 底层实现原理采用改写语句
+		List<User> listUser = userMapper.selectUsers();
+		//	PageInfo<User> pageInfoUserList= userMapper.findUserList();
+		// 返回给客户端展示
+		PageInfo<User> pageInfoUserList = new PageInfo<User>(listUser);
+		
+		return pageInfoUserList;
 	}
 
 	@Transactional
